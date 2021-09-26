@@ -1,4 +1,4 @@
-import { $ } from "@core/dom";
+import { $ } from '@core/dom';
 
 export class Excel {
   /**
@@ -18,10 +18,10 @@ export class Excel {
    */
   getRoot() {
     // create root dom instance element
-    const $root = $.create("div", "excel");
+    const $root = $.create('div', 'excel');
 
     this.components = this.components.map((Component) => {
-      const $el = $.create("div", Component.className);
+      const $el = $.create('div', Component.className);
       const component = new Component($el);
       // DEBUG
       /* if (component.name) {
