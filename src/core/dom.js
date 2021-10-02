@@ -23,11 +23,12 @@ class Dom {
   /**
    * Getter/Setter for text property of dom instance element.
    * @param {string| undefined} text 
-   * @returns element with inserted text or text content of an element.
+   * @returns context of the current dom instance or text content of an element.
    */
   text(text) {
     if (typeof text === 'string') {
-      return this.$el.textContent = text;
+      this.$el.textContent = text;
+      return this;
     }
     if (this.$el.tagName.toLowerCase() === 'input') {
       return this.$el.value.trim();
@@ -142,6 +143,7 @@ class Dom {
    */
   addClass(className) {
     this.$el.classList.add(className);
+    return this;
   }
 
   /**
@@ -150,6 +152,7 @@ class Dom {
    */
   removeClass(className) {
     this.$el.classList.remove(className);
+    return this;
   }
 
   /**
