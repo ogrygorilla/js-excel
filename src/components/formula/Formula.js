@@ -33,14 +33,10 @@ export class Formula extends ExcelComponent {
   }
 
   onInput(event) {
-    // console.log(this.$root);
-    console.log($(event.target).text());
     this.$emit('formula:input', $(event.target).text());
   }
 
-  onClick() {
-    console.log('click');
-  }
+  onClick() {}
 
   onKeydown(event) {
     const keys = ['Enter', 'Tab'];

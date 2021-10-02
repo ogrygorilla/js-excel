@@ -40,7 +40,7 @@ export class Table extends ExcelComponent {
 
   selectCell($cell) {
     this.tableSelection.select($cell);
-      this.$emit('table:cellSelection', this.tableSelection.currentSelection);
+    this.$emit('table:cellSelection', this.tableSelection.currentSelection);
   }
 
   onClick() {}
@@ -63,13 +63,9 @@ export class Table extends ExcelComponent {
     }
   }
 
-  onMousemove() {
-    // console.log(event.target)
-  }
+  onMousemove() {}
 
-  onMouseup() {
-    // console.log(event.target)
-  }
+  onMouseup() {}
 
   onKeydown(event) {
     const keys = ['Enter', 'Tab', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'];

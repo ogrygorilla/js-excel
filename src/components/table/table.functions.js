@@ -39,11 +39,11 @@ export function selectionMatrix($cellToSelect, currentSelection) {
 }
 
 /**
- * Calculates the index of cell that will be marked as selected 
+ * Calculates the index of cell that will be marked as selected
  * depending on pressed keyboard key
- * @param {*} key keyboard key 
+ * @param {string} key keyboard key
  * @param col @param row col and row index of cell to be celected
- * @returns 
+ * @returns
  */
 export function nextSelector(key, { col, row }) {
   const MIN_VALUE = 0;
