@@ -1,5 +1,10 @@
 import { $ } from '@core/dom';
 
+/**
+ * Defines resizer behavior depending on user mouse events
+ * @param $root root element 
+ * @param event instance of plain js event 
+ */
 export function resizeHandler($root, event) {
   // create dom instance of event target
   const $resizer = $(event.target);

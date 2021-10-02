@@ -19,6 +19,22 @@ class Dom {
     }
     return this.$el.outerHTML.trim();
   }
+
+  /**
+   * Getter/Setter for text property of dom instance element.
+   * @param {string| undefined} text 
+   * @returns element with inserted text or text content of an element.
+   */
+  text(text) {
+    if (typeof text === 'string') {
+      return this.$el.textContent = text;
+    }
+    if (this.$el.tagName.toLowerCase() === 'input') {
+      return this.$el.value.trim();
+    }
+    return this.$el.textContent.trim();
+  }
+
   /**
    * Clears the html of Dom instance
    */
@@ -88,12 +104,28 @@ class Dom {
 
   /**
    * @param selector selector to find specific element within current dom instance element
+   * @returns found element that match the selector
+   */
+  find(selector) {
+    return $(this.$el.querySelector(selector));
+  }
+
+  /**
+   * @param selector selector to find specific element within current dom instance element
    * @returns found elements that match the selector
    */
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
 
+  /**
+   * Sets focus on current element
+   * @returns current context of dom class
+   */
+  focus() {
+    this.$el.focus();
+    return this;
+  }
   /**
    * Adds styles to dom instance element
    * @param styles object that contains styles to add in key -> value format
@@ -102,6 +134,36 @@ class Dom {
     Object.keys(styles).forEach((key) => {
       this.$el.style[key] = styles[key];
     });
+  }
+
+  /**
+   * Adds class to the dom instance element
+   * @param className class name to be added
+   */
+  addClass(className) {
+    this.$el.classList.add(className);
+  }
+
+  /**
+   * Removes class from the dom instance element
+   * @param className class name to be removed
+   */
+  removeClass(className) {
+    this.$el.classList.remove(className);
+  }
+
+  /**
+   * @returns id of the element or parsed id depending on @param parse flag
+   */
+  id(parse) {
+    if (parse) {
+      const parsedId = this.id().split(':');
+      return {
+        row: +parsedId[0],
+        col: +parsedId[1]
+      };
+    }
+    return this.data.id;
   }
 }
 /**
