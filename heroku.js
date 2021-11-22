@@ -1,5 +1,6 @@
 const http = require('http');
 const path = require('path');
+const port = process.env.PORT || 3333;
 
 const server = http.createServer((req, res) => {
   if (req.url !== '/favicon.ico') {
@@ -10,6 +11,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(80, () => {
+server.listen(port, () => {
   console.log('ExcelJs is runing on the heroku serer');
 });
