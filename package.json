@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Pure JavaScript Excel Application",
   "main": "webpack.config.js",
+  "engines": {
+    "node": "14.17.6",
+    "npm": "7.11.1"
+  },
   "scripts": {
+    "start": "npm run serve",
     "test": "jest",
     "test:watch": "jest --watch",
-    "start": "npm run serve",
     "serve": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "lint": "npx eslint src"
