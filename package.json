@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "npm run build",
-    "heroku-postbuild": "node heroku.js",
+    "heroku-postbuild": "sudo node heroku.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "serve": "cross-env NODE_ENV=development webpack-dev-server",
