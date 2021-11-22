@@ -8,7 +8,7 @@
     "npm": "7.11.1"
   },
   "scripts": {
-    "start": "npm run serve",
+    "start": "webpack-dev-server",
     "test": "jest",
     "test:watch": "jest --watch",
     "serve": "cross-env NODE_ENV=development webpack-dev-server",
