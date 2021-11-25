@@ -8,7 +8,7 @@
     "npm": "7.11.1"
   },
   "scripts": {
-    "start": "npm install --prefix heroku-deployment && node deploy --prefix heroku-deployment",
+    "start": "npm install --prefix heroku-deployment && npm start --prefix heroku-deployment",
     "test": "jest",
     "test:watch": "jest --watch",
     "serve": "cross-env NODE_ENV=development webpack-dev-server",
