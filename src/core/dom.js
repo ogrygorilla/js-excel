@@ -8,7 +8,8 @@ class Dom {
   }
 
   /**
-   * Inners html to dom instance element
+   * Inners html to dom instance element or returns
+   * html of element
    * @param html html to inner
    * @returns
    */
@@ -22,11 +23,11 @@ class Dom {
 
   /**
    * Getter/Setter for text property of dom instance element.
-   * @param {string| undefined} text 
+   * @param {string| undefined} text
    * @returns context of the current dom instance or text content of an element.
    */
   text(text) {
-    if (typeof text === 'string') {
+    if (typeof text !== 'undefined') {
       this.$el.textContent = text;
       return this;
     }
@@ -137,6 +138,13 @@ class Dom {
     });
   }
 
+  getStyles(styles = []) {
+    return styles.reduce((res, style) => {
+      res[style] = this.$el.style[style];
+      return res;
+    }, {});
+  }
+
   /**
    * Adds class to the dom instance element
    * @param className class name to be added
@@ -167,6 +175,15 @@ class Dom {
       };
     }
     return this.data.id;
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value);
+      return this;
+    }
+
+    return this.$el.getAttribute(name);
   }
 }
 /**

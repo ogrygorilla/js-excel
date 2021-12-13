@@ -1,5 +1,8 @@
 import { $ } from '@core/dom';
 import { Emitter } from '@core/Emitter';
+import { StoreSubscriber } from '@core/StoreSubscriber';
+import { updateDate } from '@/redux/actionCreators';
+import { preventDefault } from '@core/utils';
 
 export class Excel {
   /**
@@ -7,10 +10,11 @@ export class Excel {
    * @param selector
    * @param options
    */
-  constructor(selector, options) {
-    this.$el = $(selector);
+  constructor(options) {
     this.components = options.components || [];
+    this.store = options.store;
     this.emitter = new Emitter();
+    this.storeSubscriber = new StoreSubscriber(this.store);
   }
 
   /**
@@ -23,7 +27,8 @@ export class Excel {
     const $root = $.create('div', 'excel');
 
     const componentOptions = {
-      emitter: this.emitter
+      emitter: this.emitter,
+      store: this.store
     };
 
     this.components = this.components.map((Component) => {
@@ -46,19 +51,23 @@ export class Excel {
    * Appends root element to excel instance, initialize each
    * component, which is provided to excel class property.
    */
-  render() {
-    // get root element and append it to `$el` property of excel instance
-    this.$el.append(this.getRoot());
-
+  init() {
+    if (process.env.NODE_ENV === 'production') {
+      document.addEventListener('contextmenu', preventDefault);
+    }
+    this.store.dispatch(updateDate());
+    this.storeSubscriber.subscribeComponents(this.components);
     // initialize event listeners for each component
     this.components.forEach((component) => component.init());
   }
 
   /**
-   * 
+   *
    */
   destroy() {
+    this.storeSubscriber.unsubscribeFromStore();
     // Unsubscribe from all subscriptions in each component.
     this.components.forEach((component) => component.destroy());
+    document.removeEventListener('contextmenu', preventDefault);
   }
 }
