@@ -4,8 +4,8 @@
   "description": "Pure JavaScript Excel Application",
   "main": "webpack.config.js",
   "engines": {
-    "node": "14.17.6",
-    "npm": "7.11.1"
+    "node": "16.13.1",
+    "npm": "8.1.2"
   },
   "scripts": {
     "start": "npm install --prefix heroku-deployment && npm start --prefix heroku-deployment",
@@ -50,7 +50,7 @@
     "html-webpack-plugin": "^4.5.2",
     "jest": "^27.3.1",
     "mini-css-extract-plugin": "^1.0.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "sass-loader": "^10.0.3",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
