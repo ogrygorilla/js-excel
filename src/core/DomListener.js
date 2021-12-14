@@ -10,7 +10,6 @@ export class DomListener {
   }
 
   initDOMListeners() {
-    // console.log(this.listeners, this.$root)
     this.listeners.forEach((listener) => {
       const method = getMethodName(listener);
       // check if method was provided for current instance

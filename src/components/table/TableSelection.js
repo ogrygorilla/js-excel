@@ -6,6 +6,9 @@ export class TableSelection {
     this.currentSelection = null;
   }
 
+  get selectedIds() {
+    return this.selectionGroup.map(($el) => $el.id());
+  }
   /**
    * Set provided element as selected
    * @param el dom instance element
@@ -39,5 +42,11 @@ export class TableSelection {
       $el.removeClass(TableSelection.className);
     });
     this.selectionGroup = [];
+  }
+
+  applyStyle(style) {
+    this.selectionGroup.forEach(($el) => {
+      $el.css(style);
+    });
   }
 }
